@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace Demo
 {
+    /// <summary>
+    /// Demo function
+    /// </summary>
     public static class Demo
     {
         [FunctionName("Demo")]
