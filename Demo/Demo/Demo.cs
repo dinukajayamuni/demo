@@ -15,7 +15,9 @@ namespace Demo
     /// </summary>
     public static class Demo
     {
-        // Demo function
+        /// <summary>
+        /// Demo function
+        /// </summary>
         [FunctionName("Demo")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
