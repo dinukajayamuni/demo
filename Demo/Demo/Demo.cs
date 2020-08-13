@@ -16,7 +16,7 @@ namespace Demo
     public static class Demo
     {
         /// <summary>
-        /// Demo function
+        /// Demo calculator function
         /// </summary>
         [FunctionName("Demo")]
         public static async Task<IActionResult> Run(
