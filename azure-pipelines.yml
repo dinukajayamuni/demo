@@ -67,10 +67,10 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: Publish Calculator
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)\calculator\Demo' 
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/calculator' 
         artifactName: 'calculator'
     - task: PublishBuildArtifacts@1
       displayName: Publish Integration Tests
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)\integration-tests' 
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/integration-tests' 
         artifactName: 'integration-tests'
