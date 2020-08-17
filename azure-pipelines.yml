@@ -38,9 +38,7 @@ stages:
       inputs:
         command: build
         projects: 'Demo/Demo.sln'
-        arguments: '--configuration Release --no-restore'
-      env:
-        MSBUILDSINGLELOADCONTEXT: 1    
+        arguments: '--configuration Release --no-restore'   
     - task: DotNetCoreCLI@2
       displayName: Run Unit Tests
       inputs:
@@ -54,8 +52,10 @@ stages:
         command: publish
         projects: 'Demo/Demo.Automation.Tests/Demo.Automation.Tests.csproj'
         publishWebProjects: False
-        arguments: '--no-build --configuration Release --output $(Build.ArtifactStagingDirectory)/integration-tests'
+        arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/integration-tests'
         zipAfterPublish: false
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1 
     - task: DotNetCoreCLI@2
       displayName: Zip Calculator
       inputs:
