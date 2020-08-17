@@ -20,6 +20,16 @@ namespace Demo.Automation.Tests.Steps
         {
         }
 
+        [When(@"the first number is subtracted from the second")]
+        public void WhenTheFirstNumberIsSubtractedFromTheSecond()
+        {
+        }
+
+        [When(@"the first number is multiplied by the second")]
+        public void WhenTheFirstNumberIsMultipliedByTheSecond()
+        {
+        }
+
         [Then(@"the result should be (.*)")]
         public void ThenTheResultShouldBe(int p0)
         {
