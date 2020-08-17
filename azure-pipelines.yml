@@ -6,8 +6,8 @@ name: calculator-$(Date:yyyyMMdd).$(Rev:r)
 trigger:
 - master
 - test-branch
-pool:
-  vmImage: 'ubuntu-latest'
+variables:
+  vmImageName: 'ubuntu-latest'
 stages:
 - stage: Build
   displayName: Build
