@@ -65,9 +65,9 @@ stages:
         arguments: '--no-build --configuration Release --output $(Build.ArtifactStagingDirectory)/calculator'
         zipAfterPublish: True
     - task: PublishBuildArtifacts@1
-      displayName: Publish Event Service
+      displayName: Publish Calculator
       inputs:
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)\calculator' 
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)\calculator\Demo' 
         artifactName: 'calculator'
     - task: PublishBuildArtifacts@1
       displayName: Publish Integration Tests
