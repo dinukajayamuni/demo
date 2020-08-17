@@ -3,7 +3,7 @@ Feature: Addition
 	As a math idiot
 	I want to be told the sum of two numbers
 
-@tc:9
+@tc:18
 @mytag
 Scenario: Add two numbers
 	Given the first number is 50

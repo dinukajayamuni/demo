@@ -2,11 +2,14 @@
   "$schema": "http://schemas.specsolutions.eu/specsync4azuredevops-config-latest.json",
   "remote": {
     "projectUrl": "https://dev.azure.com/dinukajayamuni/demo",
-    "user": "%SPECSYNC_PAT%"
+    "user": "%SPECSYNC_PAT%",
+    "testSuite": {
+      "id": 17
+    }
   },
   "synchronization": {
     "automation": {
-      "testExecutionStrategy": "testSuiteBasedExecution",
+      "testExecutionStrategy": "assemblyBasedExecution",
       "enabled": true
     }
   }

@@ -84,15 +84,15 @@ namespace Demo.Automation.Tests.Features
         [Xunit.SkippableFactAttribute(DisplayName="Add two numbers")]
         [Xunit.TraitAttribute("FeatureTitle", "Addition")]
         [Xunit.TraitAttribute("Description", "Add two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:9")]
+        [Xunit.TraitAttribute("Category", "tc:18")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void AddTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:9",
+                    "tc:18",
                     "mytag"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, new string[] {
-                        "tc:9",
+                        "tc:18",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);
