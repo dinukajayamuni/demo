@@ -30,6 +30,11 @@ namespace Demo.Automation.Tests.Steps
         {
         }
 
+        [When(@"the first number is divided by the second")]
+        public void WhenTheFirstNumberIsDividedByTheSecond()
+        {
+        }
+
         [Then(@"the result should be (.*)")]
         public void ThenTheResultShouldBe(int p0)
         {
