@@ -15,10 +15,16 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <None Update="specsync.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(ProjectDir)Features\*.feature" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
+  <Target Name="CopySpecSyncProj" Condition="'$(Configuration)' == 'Release'" AfterTargets="BeforeBuild">
+    <Copy SourceFiles="specsync.csproj" DestinationFolder="$(OutDir)" />
+  </Target>
 </Project>
