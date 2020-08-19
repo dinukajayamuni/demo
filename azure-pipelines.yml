@@ -17,22 +17,22 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - powershell: | 
-        Get-FileHash -Algorithm MD5 -Path (Get-ChildItem Demo/**/*.csproj -Recurse) >> hash.txt
-      displayName: 'Calculate Nuget Packages Cache Key'
-    - task: CacheBeta@0 
-      inputs:
-        key: nuget|1|$(Agent.OS)|hash.txt
-        path: $(UserProfile)/.nuget/packages
-        cacheHitVar: 'nuget_cache_hit'
-      displayName: Cache Nuget Packages
-      continueOnError: true
+    # - powershell: | 
+    #     Get-FileHash -Algorithm MD5 -Path (Get-ChildItem Demo/**/*.csproj -Recurse) >> hash.txt
+    #   displayName: 'Calculate Nuget Packages Cache Key'
+    # - task: CacheBeta@0 
+    #   inputs:
+    #     key: nuget|1|$(Agent.OS)|hash.txt
+    #     path: $(UserProfile)/.nuget/packages
+    #     cacheHitVar: 'nuget_cache_hit'
+    #   displayName: Cache Nuget Packages
+    #   continueOnError: true
     - task: DotNetCoreCLI@2
       displayName: Restore Demo.sln
       inputs:
         command: restore
         projects: 'Demo/Demo.sln'
-        arguments: '--source $(UserProfile)/.nuget/packages'
+        # arguments: '--source $(UserProfile)/.nuget/packages'
     - task: DotNetCoreCLI@2
       displayName: Build Demo.sln
       inputs:
