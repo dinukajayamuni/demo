@@ -2,18 +2,75 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
+name: calculator-$(Date:yyyyMMdd).$(Rev:r)
 trigger:
 - master
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- test-branch
+variables:
+  vmImageName: 'ubuntu-latest'
+stages:
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    # - powershell: | 
+    #     Get-FileHash -Algorithm MD5 -Path (Get-ChildItem Demo/**/*.csproj -Recurse) >> hash.txt
+    #   displayName: 'Calculate Nuget Packages Cache Key'
+    # - task: CacheBeta@0 
+    #   inputs:
+    #     key: nuget|1|$(Agent.OS)|hash.txt
+    #     path: $(UserProfile)/.nuget/packages
+    #     cacheHitVar: 'nuget_cache_hit'
+    #   displayName: Cache Nuget Packages
+    #   continueOnError: true
+    - task: DotNetCoreCLI@2
+      displayName: Restore Demo.sln
+      inputs:
+        command: restore
+        projects: 'Demo/Demo.sln'
+        # arguments: '--source $(UserProfile)/.nuget/packages'
+    - task: DotNetCoreCLI@2
+      displayName: Build Demo.sln
+      inputs:
+        command: build
+        projects: 'Demo/Demo.sln'
+        arguments: '--configuration Release --no-restore'   
+    - task: DotNetCoreCLI@2
+      displayName: Run Unit Tests
+      inputs:
+        command: test
+        projects: |
+          Demo/Demo.Tests/Demo.Tests.csproj
+        arguments: '--configuration Release --collect "Code coverage"'
+    - task: DotNetCoreCLI@2
+      displayName: Package Integration Tests
+      inputs:
+        command: publish
+        projects: 'Demo/Demo.Automation.Tests/Demo.Automation.Tests.csproj'
+        publishWebProjects: False
+        arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/integration-tests'
+        zipAfterPublish: false
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1 
+    - task: DotNetCoreCLI@2
+      displayName: Zip Calculator
+      inputs:
+        command: publish
+        projects: 'Demo/Demo/Demo.csproj'
+        publishWebProjects: False
+        arguments: '--no-build --configuration Release --output $(Build.ArtifactStagingDirectory)/calculator'
+        zipAfterPublish: True
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Calculator
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/calculator' 
+        artifactName: 'calculator'
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Integration Tests
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/integration-tests' 
+        artifactName: 'integration-tests'

@@ -8,11 +8,20 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.0.225" />
-    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.225" />
-    <PackageReference Include="SpecSync.AzureDevOps.SpecFlow.3-0" Version="3.0.0" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.62" />
+    <PackageReference Include="SpecFlow.xUnit" Version="3.1.62" />
+    <PackageReference Include="SpecSync.AzureDevOps.SpecFlow.3-1" Version="3.0.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <FeatureFiles Include="$(ProjectDir)Features\*.feature" />
+  </ItemGroup>
+
+  <Target Name="CopySpecSyncProj" Condition="'$(Configuration)' == 'Release'" AfterTargets="Publish">
+    <Copy SourceFiles="specsync.csproj" DestinationFolder="$(PublishDir)" />
+    <Copy SourceFiles="specsync.json" DestinationFolder="$(PublishDir)" />
+    <Copy SourceFiles="@(FeatureFiles)" DestinationFolder="$(PublishDir)\Features" />
+  </Target>
 </Project>
