@@ -110,4 +110,4 @@ $createTestRunPayload = @{
 $createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/dinukajayamuni/demo/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
 $testRun = ConvertFrom-Json $([String]::new($createTestRunResponse.Content))
 Write-Host "Test Run $($testRun.id)"
-Write-Host ##vso[task.setvariable variable=test.RunId;]$testRun.id
+Write-Host ##vso[task.setvariable variable=testRunId;]$testRun.id
