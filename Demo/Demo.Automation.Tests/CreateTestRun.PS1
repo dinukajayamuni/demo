@@ -63,7 +63,8 @@ foreach ($workItem in $workItems.value) {
             $planId = $Matches[1]
             $suiteId = $Matches[2]
             if ($jiraLink.object.title -ne $null -and $jiraLink.object.title -ne ""){
-                $testCaseIds = $jiraLink.object.title -split ','
+                $jiraLink.object.title -match "Test\s?Cases\[((\d+,?)*)\]"
+                $testCaseIds = $Matches[1] -split ','
                 foreach($testCaseId in $testCaseIds){
                     $testCaseId = $testCaseId -replace '^\s+|\s+$'
                     if ($testCaseId -eq ""){
@@ -89,9 +90,8 @@ foreach ($workItem in $workItems.value) {
     }
 }
 
-
 $createTestRunPayload = @{
-    name = "OnDemandTestRun 20/08/2020, 15:12:55"
+    name = "OnDemandTestRun"
     automated = $true
     pointIds = $testPointsArray
     state = "NotStarted"
@@ -110,4 +110,4 @@ $createTestRunPayload = @{
 $createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/dinukajayamuni/demo/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
 $testRun = ConvertFrom-Json $([String]::new($createTestRunResponse.Content))
 Write-Host "Test Run $($testRun.id)"
-Write-Host ##vso[task.setvariable variable=testRunId;]$testRun.id
+Write-Host "##vso[task.setvariable variable=runid;]$testRun.id"
