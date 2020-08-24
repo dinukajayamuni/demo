@@ -64,17 +64,17 @@ stages:
         arguments: '--no-build --configuration Release --output $(Build.ArtifactStagingDirectory)/calculator'
         zipAfterPublish: True
     - task: CopyFiles@2
-        displayName: 'Copy Deployment Scripts'
-        inputs:
-          Contents: |
-            deploy\**\*.*
-          TargetFolder: '$(Build.ArtifactStagingDirectory)\deploy'
-          flattenFolders: False
+      displayName: 'Copy Deployment Scripts'
+      inputs:
+        Contents: |
+          deploy\**\*.*
+        TargetFolder: '$(Build.ArtifactStagingDirectory)\deploy'
+        flattenFolders: False
     - task: PublishBuildArtifacts@1
-        displayName: Publish Deployment Scripts
-        inputs:
-          pathtoPublish: '$(Build.ArtifactStagingDirectory)\deploy' 
-          artifactName: 'deploy'
+      displayName: Publish Deployment Scripts
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)\deploy' 
+        artifactName: 'deploy'
     - task: PublishBuildArtifacts@1
       displayName: Publish Calculator
       inputs:
