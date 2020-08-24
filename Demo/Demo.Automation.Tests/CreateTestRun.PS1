@@ -40,7 +40,7 @@ foreach ($release in $releases.value) {
         break
     } 
 }
-
+Write-Host "Previous Release: $($previousReleaseId)"
 $workItemsUrl = "https://vsrm.dev.azure.com/$($devOpsProject)/_apis/release/releases/$($releaseId)/workitems?baseReleaseId=$($previousReleaseId)"
 $workItemsResponse = Invoke-WebRequest -Method GET -Uri $workItemsUrl -Headers $devOpsHeaders
 $workItems = ConvertFrom-Json $([String]::new($workItemsResponse.Content))
@@ -95,24 +95,28 @@ foreach ($workItem in $workItems.value) {
     }
 }
 
-$createTestRunPayload = @{
-    name = "OnDemandTestRun"
-    automated = $true
-    pointIds = $testPointsArray
-    state = "NotStarted"
-    dtlTestEnvironment = @{
-        id = "vstfs://dummy"
-    }
-    plan = @{
-        id = $planId
-    }
-    filter = @{
-        sourceFilter = "*.dll"
-        testCaseFilter = ""
-    }
-} | ConvertTo-Json
- 
-$createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/dinukajayamuni/demo/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
-$testRun = ConvertFrom-Json $([String]::new($createTestRunResponse.Content))
-Write-Host "Test Run $($testRun.id)"
-Write-Host "##vso[task.setvariable variable=runid;]$testRun.id"
+Write-Host "Test Points: $($testPointsArray)"
+
+if( $testPointsArray.length -gt 0){
+    $createTestRunPayload = @{
+        name = "OnDemandTestRun"
+        automated = $true
+        pointIds = $testPointsArray
+        state = "NotStarted"
+        dtlTestEnvironment = @{
+            id = "vstfs://dummy"
+        }
+        plan = @{
+            id = $planId
+        }
+        filter = @{
+            sourceFilter = "*.dll"
+            testCaseFilter = ""
+        }
+    } | ConvertTo-Json
+
+    $createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/dinukajayamuni/demo/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
+    $testRun = ConvertFrom-Json $([String]::new($createTestRunResponse.Content))
+    Write-Host "Test Run $($testRun.id)"
+    Write-Host "##vso[task.setvariable variable=runid;]$testRun.id"
+}
