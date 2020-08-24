@@ -5,6 +5,8 @@
     [Parameter(Mandatory=$true)][string]$devopsPassword,
     [Parameter(Mandatory=$true)][string]$releaseId
  )
+
+Write-Host "Release: $($releaseId)"
 $devopsUser = ''
 
 $devopsCreds = "$($devopsUser):$($devopsPassword)"
@@ -62,6 +64,8 @@ foreach ($workItem in $workItems.value) {
         if ($jiraLink.object.url -match "planId=(\d+)&suiteId=(\d+)" -eq $true){
             $planId = $Matches[1]
             $suiteId = $Matches[2]
+            Write-Host "Test Plan: $($planId)"
+            Write-Host "Test Suite: $($suiteId)"
             if ($jiraLink.object.title -ne $null -and $jiraLink.object.title -ne ""){
                 $jiraLink.object.title -match "Test\s?Cases\[((\d+,?)*)\]"
                 $testCaseIds = $Matches[1] -split ','
@@ -70,6 +74,7 @@ foreach ($workItem in $workItems.value) {
                     if ($testCaseId -eq ""){
                         continue
                     }
+                    Write-Host "Test Case: $($testCaseId)"
                     $testPointsUrl = "https://dev.azure.com/$($devOpsProject)/_apis/test/Plans/$($planId)/Suites/$($suiteId)/points?testCaseId=$($testCaseId)"
                     $testPointsResponse = Invoke-WebRequest -Method GET -Uri $testPointsUrl -Headers $devOpsHeaders
                     $testPoints = ConvertFrom-Json $([String]::new($testPointsResponse.Content)) 
