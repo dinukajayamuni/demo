@@ -117,6 +117,7 @@ if( $testPointsArray.length -gt 0){
 
     $createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/dinukajayamuni/demo/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
     $testRun = ConvertFrom-Json $([String]::new($createTestRunResponse.Content))
-    Write-Host "Test Run $($testRun.id)"
-    Write-Host "##vso[task.setvariable variable=runid;]$testRun.id"
+    $testRunId = $testRun.id
+    Write-Host "Test Run $($testRunId)"
+    Write-Host "##vso[task.setvariable variable=runid;]$testRunId"
 }
