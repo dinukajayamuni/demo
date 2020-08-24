@@ -18,11 +18,4 @@
   <ItemGroup>
     <FeatureFiles Include="$(ProjectDir)Features\*.feature" />
   </ItemGroup>
-
-  <Target Name="CopySpecSyncProj" Condition="'$(Configuration)' == 'Release'" AfterTargets="Publish">
-    <Copy SourceFiles="specsync.csproj" DestinationFolder="$(PublishDir)" />
-    <Copy SourceFiles="specsync.json" DestinationFolder="$(PublishDir)" />
-    <Copy SourceFiles="CreateTestRun.PS1" DestinationFolder="$(PublishDir)" />
-    <Copy SourceFiles="@(FeatureFiles)" DestinationFolder="$(PublishDir)\Features" />
-  </Target>
 </Project>

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Demo.Automation.Tests.Features
+namespace Calculator.Automation.Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Demo.Automation.Tests.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class MultiplicationFeature : Xunit.IClassFixture<MultiplicationFeature.FixtureData>, System.IDisposable
+    public partial class AdditionFeature : Xunit.IClassFixture<AdditionFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Demo.Automation.Tests.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Multiplication.feature"
+#line 1 "Addition.feature"
 #line hidden
         
-        public MultiplicationFeature(MultiplicationFeature.FixtureData fixtureData, Demo_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public AdditionFeature(AdditionFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Demo.Automation.Tests.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Multiplication", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told multiplic" +
-                    "ation of two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Addition", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
+                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,18 +81,18 @@ namespace Demo.Automation.Tests.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Multiply two numbers")]
-        [Xunit.TraitAttribute("FeatureTitle", "Multiplication")]
-        [Xunit.TraitAttribute("Description", "Multiply two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:13")]
+        [Xunit.SkippableFactAttribute(DisplayName="Add two numbers")]
+        [Xunit.TraitAttribute("FeatureTitle", "Addition")]
+        [Xunit.TraitAttribute("Description", "Add two numbers")]
+        [Xunit.TraitAttribute("Category", "tc:18")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void MultiplyTwoNumbers()
+        public virtual void AddTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:13",
+                    "tc:18",
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiply two numbers", null, new string[] {
-                        "tc:13",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, new string[] {
+                        "tc:18",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -115,16 +115,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("the first number is 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.And("the second number is 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.When("the first number is multiplied by the second", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.Then("the result should be 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -137,12 +137,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                MultiplicationFeature.FeatureSetup();
+                AdditionFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                MultiplicationFeature.FeatureTearDown();
+                AdditionFeature.FeatureTearDown();
             }
         }
     }

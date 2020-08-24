@@ -1,6 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 
-namespace Demo.Automation.Tests.Steps
+namespace Calculator.Automation.Tests.Steps
 {
     [Binding]
     public class CalculatorSteps
