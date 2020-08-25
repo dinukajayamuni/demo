@@ -3,7 +3,7 @@ Feature: Subtraction
 	As a math idiot
 	I want to be told the difference of two numbers
 
-@tc:14
+@tc:24
 @mytag
 Scenario: Subtract a number from another
 	Given the first number is 70

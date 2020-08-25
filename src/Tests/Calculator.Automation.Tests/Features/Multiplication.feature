@@ -3,7 +3,7 @@ Feature: Multiplication
 	As a math idiot
 	I want to be told multiplication of two numbers
 
-@tc:13
+@tc:23
 @mytag
 Scenario: Multiply two numbers
 	Given the first number is 3

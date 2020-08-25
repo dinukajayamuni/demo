@@ -3,7 +3,7 @@ Feature: Divide
 	As a math idiot
 	I want to be told the divition of two numbers
 
-@tc:19
+@tc:22
 @mytag
 Scenario: Divide two numbers
 	Given the first number is 50
