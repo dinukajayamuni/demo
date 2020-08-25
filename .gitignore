@@ -340,3 +340,4 @@ ASALocalRun/
 healthchecksdb
 /src/AGL.Wholesale.Trading.PTLM.API/Properties/launchSettings.json
 /src/AGL.Wholesale.Trading.PTLM.API/appsettings.Development.json
+src/Tests/Calculator.Automation.Tests/.config/dotnet-tools.json
