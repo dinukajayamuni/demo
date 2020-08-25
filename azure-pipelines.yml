@@ -27,29 +27,29 @@ stages:
     #   displayName: Cache Nuget Packages
     #   continueOnError: true
     - task: DotNetCoreCLI@2
-      displayName: Restore Demo.sln
+      displayName: Restore Calculator.sln
       inputs:
         command: restore
-        projects: 'Demo/Demo.sln'
+        projects: 'src/Calculator/Calculator.sln'
         # arguments: '--source $(UserProfile)/.nuget/packages'
     - task: DotNetCoreCLI@2
-      displayName: Build Demo.sln
+      displayName: Build Calculator.sln
       inputs:
         command: build
-        projects: 'Demo/Demo.sln'
+        projects: 'src/Calculator/Calculator.sln'
         arguments: '--configuration Release --no-restore'   
     - task: DotNetCoreCLI@2
       displayName: Run Unit Tests
       inputs:
         command: test
         projects: |
-          Demo/Demo.Tests/Demo.Tests.csproj
+          src/Calculator/Calculator.Tests/Calculator.Tests.csproj
         arguments: '--configuration Release --collect "Code coverage"'
     - task: DotNetCoreCLI@2
       displayName: Package Integration Tests
       inputs:
         command: publish
-        projects: 'Demo/Demo.Automation.Tests/Demo.Automation.Tests.csproj'
+        projects: 'src/Tests/Calculator.Automation.Tests/Calculator.Automation.Tests.csproj'
         publishWebProjects: False
         arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/integration-tests'
         zipAfterPublish: false
@@ -59,10 +59,22 @@ stages:
       displayName: Zip Calculator
       inputs:
         command: publish
-        projects: 'Demo/Demo/Demo.csproj'
+        projects: 'src/Calculator/Calculator/Calculator.csproj'
         publishWebProjects: False
         arguments: '--no-build --configuration Release --output $(Build.ArtifactStagingDirectory)/calculator'
         zipAfterPublish: True
+    - task: CopyFiles@2
+      displayName: 'Copy Deployment Scripts'
+      inputs:
+        Contents: |
+          deploy/**/*.*
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/deploy'
+        flattenFolders: False
+    - task: PublishBuildArtifacts@1
+      displayName: Publish Deployment Scripts
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)/deploy' 
+        artifactName: 'deploy'
     - task: PublishBuildArtifacts@1
       displayName: Publish Calculator
       inputs:

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Demo.Automation.Tests.Features
+namespace Calculator.Automation.Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Demo.Automation.Tests.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class DivideFeature : Xunit.IClassFixture<DivideFeature.FixtureData>, System.IDisposable
+    public partial class SubtractionFeature : Xunit.IClassFixture<SubtractionFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Demo.Automation.Tests.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Divide.feature"
+#line 1 "Subtraction.feature"
 #line hidden
         
-        public DivideFeature(DivideFeature.FixtureData fixtureData, Demo_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SubtractionFeature(SubtractionFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Demo.Automation.Tests.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Divide", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the divit" +
-                    "ion of two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Subtraction", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the diffe" +
+                    "rence of two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,18 +81,18 @@ namespace Demo.Automation.Tests.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Divide two numbers")]
-        [Xunit.TraitAttribute("FeatureTitle", "Divide")]
-        [Xunit.TraitAttribute("Description", "Divide two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:19")]
+        [Xunit.SkippableFactAttribute(DisplayName="Subtract a number from another")]
+        [Xunit.TraitAttribute("FeatureTitle", "Subtraction")]
+        [Xunit.TraitAttribute("Description", "Subtract a number from another")]
+        [Xunit.TraitAttribute("Category", "tc:14")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void DivideTwoNumbers()
+        public virtual void SubtractANumberFromAnother()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:19",
+                    "tc:14",
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Divide two numbers", null, new string[] {
-                        "tc:19",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtract a number from another", null, new string[] {
+                        "tc:14",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -115,16 +115,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the first number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.And("the second number is 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the second number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.When("the first number is divided by the second", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the first number is subtracted from the second", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.Then("the result should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 20", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -137,12 +137,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                DivideFeature.FeatureSetup();
+                SubtractionFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                DivideFeature.FeatureTearDown();
+                SubtractionFeature.FeatureTearDown();
             }
         }
     }
