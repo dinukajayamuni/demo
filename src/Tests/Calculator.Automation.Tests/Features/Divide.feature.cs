@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Calculator.Automation.Tests.Features
+namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace Calculator.Automation.Tests.Features
 #line 1 "Divide.feature"
 #line hidden
         
-        public DivideFeature(DivideFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public DivideFeature(DivideFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -84,15 +84,15 @@ namespace Calculator.Automation.Tests.Features
         [Xunit.SkippableFactAttribute(DisplayName="Divide two numbers")]
         [Xunit.TraitAttribute("FeatureTitle", "Divide")]
         [Xunit.TraitAttribute("Description", "Divide two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:19")]
+        [Xunit.TraitAttribute("Category", "tc:22")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void DivideTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:19",
+                    "tc:22",
                     "mytag"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Divide two numbers", null, new string[] {
-                        "tc:19",
+                        "tc:22",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -7,10 +7,82 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-    <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Serilog.Sinks.XUnit" Version="2.0.4" />
+    <PackageReference Include="SolidToken.SpecFlow.DependencyInjection" Version="0.4.1" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.62" />
+    <PackageReference Include="SpecFlow.xUnit" Version="3.1.62" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <!--<ItemGroup>
+    <FeatureFiles Include="..\..\Tests\Calculator.Automation.Tests\Features\*.feature"/>
+  </ItemGroup>
+
+  <Target Name="CopyFiles" BeforeTargets="Build">
+    <Copy
+      SourceFiles="@(FeatureFiles)"
+      DestinationFolder="Features"
+    />
+  </Target>-->
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Include="..\..\Tests\Calculator.Automation.Tests\Features\*.feature">
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature.cs</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
+
+  <ItemGroup>
+    <CustomAdditionalCompileInputs Remove="..\..\Tests\Calculator.Automation.Tests\Features\Addition.feature.cs" />
+    <CustomAdditionalCompileInputs Remove="..\..\Tests\Calculator.Automation.Tests\Features\Divide.feature.cs" />
+    <CustomAdditionalCompileInputs Remove="..\..\Tests\Calculator.Automation.Tests\Features\Multiplication.feature.cs" />
+    <CustomAdditionalCompileInputs Remove="..\..\Tests\Calculator.Automation.Tests\Features\Subtraction.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckBuild Remove="..\..\Tests\Calculator.Automation.Tests\Features\Addition.feature.cs" />
+    <UpToDateCheckBuild Remove="..\..\Tests\Calculator.Automation.Tests\Features\Divide.feature.cs" />
+    <UpToDateCheckBuild Remove="..\..\Tests\Calculator.Automation.Tests\Features\Multiplication.feature.cs" />
+    <UpToDateCheckBuild Remove="..\..\Tests\Calculator.Automation.Tests\Features\Subtraction.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="..\..\Tests\Calculator.Automation.Tests\Features\Addition.feature" />
+    <UpToDateCheckInput Remove="..\..\Tests\Calculator.Automation.Tests\Features\Divide.feature" />
+    <UpToDateCheckInput Remove="..\..\Tests\Calculator.Automation.Tests\Features\Multiplication.feature" />
+    <UpToDateCheckInput Remove="..\..\Tests\Calculator.Automation.Tests\Features\Subtraction.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Tests\Calculator.Automation.Tests\Features\Addition.feature.cs" Link="Features\Addition.feature.cs" />
+    <Compile Include="..\..\Tests\Calculator.Automation.Tests\Features\Divide.feature.cs" Link="Features\Divide.feature.cs" />
+    <Compile Include="..\..\Tests\Calculator.Automation.Tests\Features\Multiplication.feature.cs" Link="Features\Multiplication.feature.cs" />
+    <Compile Include="..\..\Tests\Calculator.Automation.Tests\Features\Subtraction.feature.cs" Link="Features\Subtraction.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calculator\Calculator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="..\..\Tests\Calculator.Automation.Tests\Features\Addition.feature">
+      <Link>Features\Addition.feature</Link>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="..\..\Tests\Calculator.Automation.Tests\Features\Divide.feature">
+      <Link>Features\Divide.feature</Link>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="..\..\Tests\Calculator.Automation.Tests\Features\Multiplication.feature">
+      <Link>Features\Multiplication.feature</Link>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="..\..\Tests\Calculator.Automation.Tests\Features\Subtraction.feature">
+      <Link>Features\Subtraction.feature</Link>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
 </Project>
