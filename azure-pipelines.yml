@@ -5,6 +5,7 @@
 name: calculator-$(Date:yyyyMMdd).$(Rev:r)
 trigger:
 - master
+- test-branch
 variables:
   vmImageName: 'ubuntu-latest'
 stages:
@@ -37,7 +38,9 @@ stages:
       inputs:
         command: build
         projects: 'src/Calculator/Calculator.sln'
-        arguments: '--configuration Release --no-restore'   
+        arguments: '--configuration Release --no-restore'
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1   
     - task: DotNetCoreCLI@2
       displayName: Run Unit Tests
       inputs:
@@ -45,6 +48,8 @@ stages:
         projects: |
           src/Calculator/Calculator.Tests/Calculator.Tests.csproj
         arguments: '--configuration Release --collect "Code coverage"'
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1
     - task: DotNetCoreCLI@2
       displayName: Package Integration Tests
       inputs:
