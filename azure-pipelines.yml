@@ -5,7 +5,6 @@
 name: calculator-$(Date:yyyyMMdd).$(Rev:r)
 trigger:
 - master
-- test-branch
 variables:
   vmImageName: 'ubuntu-latest'
 stages:

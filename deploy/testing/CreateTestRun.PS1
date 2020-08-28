@@ -55,9 +55,14 @@ $jiraHeaders = @{
     Authorization = $jiraBasicAuthValue
 }
 $testPointsArray = @()
+$associatedWorkItems = @()
 foreach ($workItem in $workItems.value) {
-    $workItem.url -match "(https:\/\/.*?)\/.*\/(\w+-\d+)\/?"
+    if($workItem.url -match "(https:\/\/.*?)\/.*\/(\w+-\d+)\/?" -eq $false){
+        continue
+    }
     $jiraLinksUrl = "$($Matches[1])/rest/api/2/issue/$($Matches[2])/remotelink"
+    Write-Host "Associated Work Item: $($jiraLinksUrl)"
+    $associatedWorkItems = $associatedWorkItems + $jiraLinksUrl
     $jiraLinksResponse = Invoke-WebRequest -Method GET -Uri $jiraLinksUrl -Headers $jiraHeaders
     $jiraLinks = ConvertFrom-Json $([String]::new($jiraLinksResponse.Content))
     foreach ($jiraLink in $jiraLinks) {
@@ -66,6 +71,7 @@ foreach ($workItem in $workItems.value) {
             $suiteId = $Matches[2]
             Write-Host "Test Plan: $($planId)"
             Write-Host "Test Suite: $($suiteId)"
+            # TODO: Allow test suite or plan execution
             if ($jiraLink.object.title -ne $null -and $jiraLink.object.title -ne ""){
                 $jiraLink.object.title -match "Test\s?Cases\[((\d+,?)*)\]"
                 $testCaseIds = $Matches[1] -split ','
@@ -115,9 +121,20 @@ if( $testPointsArray.length -gt 0){
         }
     } | ConvertTo-Json
 
-    $createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/dinukajayamuni/demo/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
+    $createTestRunResponse = Invoke-WebRequest -Uri "https://dev.azure.com/$($devOpsProject)/_apis/test/Runs?api-version=6.0-preview.3" -Method POST -ContentType "application/json" -Body $createTestRunPayload -Headers $devOpsHeaders
     $testRun = ConvertFrom-Json $([String]::new($createTestRunResponse.Content))
     $testRunId = $testRun.id
     Write-Host "Test Run $($testRunId)"
     Write-Host "##vso[task.setvariable variable=runid;]$testRunId"
+
+    $createReleaseLinkPayload = @{
+        object = @{
+            url = "https://dev.azure.com/$($devOpsProject)/_TestManagement/Runs?runId=$($testRunId)&_a=runCharts"
+            title = "Test Run $($testRunId)"
+        }
+    } | ConvertTo-Json
+
+    foreach($associatedWorkItem in $associatedWorkItems){        
+        Invoke-WebRequest -Uri $associatedWorkItem -Method POST -ContentType "application/json" -Body $createReleaseLinkPayload -Headers $jiraHeaders
+    }
 }
