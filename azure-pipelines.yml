@@ -32,12 +32,16 @@ stages:
         command: restore
         projects: 'src/Calculator/Calculator.sln'
         # arguments: '--source $(UserProfile)/.nuget/packages'
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1
     - task: DotNetCoreCLI@2
       displayName: Build Calculator.sln
       inputs:
         command: build
         projects: 'src/Calculator/Calculator.sln'
-        arguments: '--configuration Release --no-restore'   
+        arguments: '--configuration Release --no-restore'
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1   
     - task: DotNetCoreCLI@2
       displayName: Run Unit Tests
       inputs:
@@ -45,6 +49,8 @@ stages:
         projects: |
           src/Calculator/Calculator.Tests/Calculator.Tests.csproj
         arguments: '--configuration Release --collect "Code coverage"'
+      env:
+        MSBUILDSINGLELOADCONTEXT: 1
     - task: DotNetCoreCLI@2
       displayName: Package Integration Tests
       inputs:
