@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Calculator.Automation.Tests.Features
+namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace Calculator.Automation.Tests.Features
 #line 1 "Multiplication.feature"
 #line hidden
         
-        public MultiplicationFeature(MultiplicationFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public MultiplicationFeature(MultiplicationFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -84,15 +84,15 @@ namespace Calculator.Automation.Tests.Features
         [Xunit.SkippableFactAttribute(DisplayName="Multiply two numbers")]
         [Xunit.TraitAttribute("FeatureTitle", "Multiplication")]
         [Xunit.TraitAttribute("Description", "Multiply two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:13")]
+        [Xunit.TraitAttribute("Category", "tc:23")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void MultiplyTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:13",
+                    "tc:23",
                     "mytag"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Multiply two numbers", null, new string[] {
-                        "tc:13",
+                        "tc:23",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);

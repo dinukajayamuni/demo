@@ -6,7 +6,7 @@ Feature: Addition
 @tc:25
 @mytag
 Scenario: Add two numbers
-	Given the first number is 50
-	And the second number is 70
+	Given the first number is 50.0
+	And the second number is 70.0
 	When the two numbers are added
-	Then the result should be 120
+	Then the result should be 120.0

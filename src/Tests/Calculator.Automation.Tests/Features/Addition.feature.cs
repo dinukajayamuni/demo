@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Calculator.Automation.Tests.Features
+namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace Calculator.Automation.Tests.Features
 #line 1 "Addition.feature"
 #line hidden
         
-        public AdditionFeature(AdditionFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public AdditionFeature(AdditionFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -84,15 +84,15 @@ namespace Calculator.Automation.Tests.Features
         [Xunit.SkippableFactAttribute(DisplayName="Add two numbers")]
         [Xunit.TraitAttribute("FeatureTitle", "Addition")]
         [Xunit.TraitAttribute("Description", "Add two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:18")]
+        [Xunit.TraitAttribute("Category", "tc:25")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void AddTwoNumbers()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:18",
+                    "tc:25",
                     "mytag"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, new string[] {
-                        "tc:18",
+                        "tc:25",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -115,16 +115,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the first number is 50.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the second number is 70.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
  testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 120.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

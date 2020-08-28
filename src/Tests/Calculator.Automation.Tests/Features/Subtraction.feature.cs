@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Calculator.Automation.Tests.Features
+namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace Calculator.Automation.Tests.Features
 #line 1 "Subtraction.feature"
 #line hidden
         
-        public SubtractionFeature(SubtractionFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SubtractionFeature(SubtractionFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -84,15 +84,15 @@ namespace Calculator.Automation.Tests.Features
         [Xunit.SkippableFactAttribute(DisplayName="Subtract a number from another")]
         [Xunit.TraitAttribute("FeatureTitle", "Subtraction")]
         [Xunit.TraitAttribute("Description", "Subtract a number from another")]
-        [Xunit.TraitAttribute("Category", "tc:14")]
+        [Xunit.TraitAttribute("Category", "tc:24")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void SubtractANumberFromAnother()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:14",
+                    "tc:24",
                     "mytag"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subtract a number from another", null, new string[] {
-                        "tc:14",
+                        "tc:24",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);
