@@ -131,6 +131,12 @@ namespace Calculator.Tests.Steps
             await ExecuteOperation(OperationType.SimpleDivision);
         }
 
+        [When(@"the first number is to the power of second number")]
+        public async Task WhenTheFirstNumberIsToThePowerOfSecondNumber()
+        {
+            await ExecuteOperation(OperationType.SimpleExponential);
+        }
+
         [Then(@"the result should be (.*)")]
         public void ThenTheResultShouldBe(decimal result)
         {
