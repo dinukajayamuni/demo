@@ -5,6 +5,7 @@
         SimpleAddition,
         SimpleSubtraction,
         SimpleMultiplication,
-        SimpleDivision
+        SimpleDivision,
+        SimpleExponential
     }
 }

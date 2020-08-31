@@ -63,8 +63,7 @@ namespace Calculator.Automation.Tests.Steps
         [When(@"the first number is to the power of second number")]
         public async Task WhenTheFirstNumberIsToThePowerOfSecondNumber()
         {
-            await Task.CompletedTask;
-            //await ExecuteOperation(OperationType.SimpleExponential);
+            await ExecuteOperation(OperationType.SimpleExponential);
         }
 
 
