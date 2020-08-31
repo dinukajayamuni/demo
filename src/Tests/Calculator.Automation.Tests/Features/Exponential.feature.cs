@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Calculator.Automation.Tests.Features
+namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace Calculator.Automation.Tests.Features
 #line 1 "Exponential.feature"
 #line hidden
         
-        public ExponentialFeature(ExponentialFeature.FixtureData fixtureData, Calculator_Automation_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ExponentialFeature(ExponentialFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -84,14 +84,17 @@ namespace Calculator.Automation.Tests.Features
         [Xunit.SkippableFactAttribute(DisplayName="First number to the power of second number")]
         [Xunit.TraitAttribute("FeatureTitle", "Exponential")]
         [Xunit.TraitAttribute("Description", "First number to the power of second number")]
+        [Xunit.TraitAttribute("Category", "tc:27")]
         [Xunit.TraitAttribute("Category", "mytag")]
         public virtual void FirstNumberToThePowerOfSecondNumber()
         {
             string[] tagsOfScenario = new string[] {
+                    "tc:27",
                     "mytag"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("First number to the power of second number", null, new string[] {
+                        "tc:27",
                         "mytag"});
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,16 +114,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
+#line 9
  testRunner.Given("the first number is 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 10
  testRunner.And("the second number is 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 11
  testRunner.When("the first number is to the power of second number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
+#line 12
  testRunner.Then("the result should be 64", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
