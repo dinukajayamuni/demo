@@ -5,6 +5,7 @@ namespace Calculator.Operations
         SimpleAddition,
         SimpleSubtraction,
         SimpleMultiplication,
-        SimpleDivision
+        SimpleDivision,
+        SimpleExponential
     }
 }
