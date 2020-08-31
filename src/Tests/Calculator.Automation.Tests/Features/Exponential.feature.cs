@@ -19,7 +19,7 @@ namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class AdditionFeature : Xunit.IClassFixture<AdditionFeature.FixtureData>, System.IDisposable
+    public partial class ExponentialFeature : Xunit.IClassFixture<ExponentialFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Addition.feature"
+#line 1 "Exponential.feature"
 #line hidden
         
-        public AdditionFeature(AdditionFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ExponentialFeature(ExponentialFeature.FixtureData fixtureData, Calculator_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Addition", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the sum o" +
-                    "f two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Exponential", "\tIn order to avoid silly mistakes\r\n\tAs a math idiot\r\n\tI want to be told the expon" +
+                    "ential of two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,18 +81,18 @@ namespace Calculator.Tests.Tests.Calculator_Automation_Tests.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Add two numbers")]
-        [Xunit.TraitAttribute("FeatureTitle", "Addition")]
-        [Xunit.TraitAttribute("Description", "Add two numbers")]
-        [Xunit.TraitAttribute("Category", "tc:25")]
+        [Xunit.SkippableFactAttribute(DisplayName="First number to the power of second number")]
+        [Xunit.TraitAttribute("FeatureTitle", "Exponential")]
+        [Xunit.TraitAttribute("Description", "First number to the power of second number")]
+        [Xunit.TraitAttribute("Category", "tc:27")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void AddTwoNumbers()
+        public virtual void FirstNumberToThePowerOfSecondNumber()
         {
             string[] tagsOfScenario = new string[] {
-                    "tc:25",
+                    "tc:27",
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, new string[] {
-                        "tc:25",
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("First number to the power of second number", null, new string[] {
+                        "tc:27",
                         "mytag"});
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -115,16 +115,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("the first number is 50.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the first number is 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.And("the second number is 70.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the second number is 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the first number is to the power of second number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.Then("the result should be 120.0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 64", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -137,12 +137,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                AdditionFeature.FeatureSetup();
+                ExponentialFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                AdditionFeature.FeatureTearDown();
+                ExponentialFeature.FeatureTearDown();
             }
         }
     }

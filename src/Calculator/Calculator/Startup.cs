@@ -21,6 +21,7 @@ namespace Calculator
             services.AddScoped<IOperator, SimpleSubtractionOperator>();
             services.AddScoped<IOperator, SimpleMultiplicationOperator>();
             services.AddScoped<IOperator, SimpleDivisionOperator>();
+            services.AddScoped<IOperator, SimpleExponentialOperator>();
         }
     }
 }
