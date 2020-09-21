@@ -13,7 +13,9 @@ $devopsCreds = "$($devopsUser):$($devopsPassword)"
 
 $devOpsEncodedCreds = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($devopsCreds))
 
-$devOpsBasicAuthValue = "Basic $devOpsEncodedCreds"
+#$devOpsBasicAuthValue = "Basic $devOpsEncodedCreds"
+
+$devOpsBasicAuthValue = "Bearer $devopsPassword"
 
 $devOpsHeaders = @{
     Authorization = $devOpsBasicAuthValue
